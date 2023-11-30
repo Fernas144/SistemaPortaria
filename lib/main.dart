@@ -3,6 +3,7 @@ import 'package:crud_exemplo_1/controller/navegacao_controller.dart';
 import 'package:crud_exemplo_1/controller/ocorrencia_controller.dart';
 import 'package:crud_exemplo_1/rotas.dart';
 import 'package:crud_exemplo_1/controller/veiculo_controller.dart';
+import 'package:crud_exemplo_1/usuario/usuario_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,13 +19,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => UsuarioController()),
         ChangeNotifierProvider(create: (context) => OcorrenciaController()),
         ChangeNotifierProvider(create: (context) => NavegacaoController()),
         ChangeNotifierProvider(create: (context) => FuncionarioController()),
         ChangeNotifierProvider(create: (context) => VeiculoController()),
       ],
       child: MaterialApp(
-        initialRoute: '/ocorrencia',
+        initialRoute: Rotas.LOGIN,
         //aqui definimos as rotas para todas as telas do app
         routes: Rotas.widgetsMap(),
         theme: ThemeData(
